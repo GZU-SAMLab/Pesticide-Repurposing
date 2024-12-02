@@ -1,2 +1,3 @@
 .vscode/
 data/train2id.txt
+openke/__pycache__/
