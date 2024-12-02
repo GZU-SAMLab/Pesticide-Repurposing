@@ -1,3 +1,2 @@
 .vscode/
-data/
-# ckpt/
+data/train2id.txt

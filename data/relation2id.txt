@@ -1,0 +1,4 @@
+3
+Impact 0
+Prevent 1
+Cure 2
