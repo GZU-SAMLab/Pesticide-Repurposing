@@ -10,7 +10,7 @@ from openke.module.strategy import NegativeSampling
 
 warnings.filterwarnings("ignore")
 # data parameters
-data_path = "data/3/"
+data_path = "data/"
 batch_size = 4096
 threads = 64
 sampling_mode = "normal"
@@ -21,8 +21,8 @@ neg_rel = 0
 
 # model parameters
 model_name = "TransH"
-dim = 200
-margin = 10
+dim = 150
+margin = 12
 
 # optimizer parameters
 train_times = 1000
@@ -76,10 +76,10 @@ trainer = Trainer(
 )
 # trainer.run()
 
-# tensorboardX save
+# model save
 model_save_path = f"ckpt/{model_name}.ckpt"
-os.makedirs(model_save_path, exist_ok=True)
-transh.save_checkpoint(model_save_path)
+# os.makedirs(model_save_path, exist_ok=True)
+# transh.save_checkpoint(model_save_path)
 
 # test the model
 transh.load_checkpoint(model_save_path)
@@ -87,5 +87,3 @@ tester = Tester(model=transh, data_loader=test_dataloader, use_gpu=True)
 mrr, mr, hit10, hit3, hit1, tail_mrr, tail_mr, tail_hit10, tail_hit3, tail_hit1 = tester.run_link_prediction(
     type_constrain=True
 )
-
-print(f"\n\nmodel: {model_name}\nMRR: {mrr}\nMR: {mr}\nHit@1: {hit1}\nHit@3: {hit3}\nHit@10: {hit10}\n\n")

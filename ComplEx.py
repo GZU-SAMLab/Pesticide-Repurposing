@@ -10,7 +10,7 @@ from openke.module.strategy import NegativeSampling
 
 warnings.filterwarnings("ignore")
 # data parameters
-data_path = "data/3/"
+data_path = "data/"
 batch_size = 4096
 threads = 64
 sampling_mode = "normal"
@@ -21,7 +21,7 @@ neg_rel = 0
 
 # model parameters
 model_name = "ComplEx"
-dim = 200
+dim = 10
 
 # optimizer parameters
 train_times = 1000
@@ -71,12 +71,12 @@ trainer = Trainer(
     use_gpu=use_gpu,
     opt_method=opt_method,
 )
-# # trainer.run()
+# trainer.run()
 
-# tensorboardX save
-model_save_path = f"ckpt/{model_name}.ckpt"
-os.makedirs(model_save_path, exist_ok=True)
-complex.save_checkpoint(model_save_path)
+# model save
+model_save_path = f"./ckpt/{model_name}.ckpt"
+# os.makedirs(model_save_path, exist_ok=True)
+# complex.save_checkpoint(model_save_path)
 
 # test the model
 complex.load_checkpoint(model_save_path)
@@ -84,5 +84,3 @@ tester = Tester(model=complex, data_loader=test_dataloader, use_gpu=True)
 mrr, mr, hit10, hit3, hit1, tail_mrr, tail_mr, tail_hit10, tail_hit3, tail_hit1 = tester.run_link_prediction(
     type_constrain=True
 )
-
-print(f"\n\nmodel: {model_name}\nMRR: {mrr}\nMR: {mr}\nHit@1: {hit1}\nHit@3: {hit3}\nHit@10: {hit10}\n\n")
