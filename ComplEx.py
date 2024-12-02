@@ -71,7 +71,7 @@ trainer = Trainer(
     use_gpu=use_gpu,
     opt_method=opt_method,
 )
-trainer.run()
+# # trainer.run()
 
 # tensorboardX save
 model_save_path = f"ckpt/{model_name}.ckpt"
