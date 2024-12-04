@@ -89,7 +89,7 @@ def parse_arguments():
 
     parser.add_argument("--save_path", type=str, default="ckpt", help="the path to save checkpoint")
 
-    parser.add_argument("--load_path", type=str, default="", help="the path to loading model")
+    parser.add_argument("--load_path", type=str, default=None, help="the path to loading model just for test")
     return parser.parse_args()
 
 
