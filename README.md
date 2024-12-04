@@ -4,6 +4,20 @@ The repository of study "Knowledge-Driven Pesticide Repurposing via link predict
 
 ## Get start
 
+### Dependencies
+
+- CUDA 11.8
+- Python 3.10 (or later)
+- torch==2.4.0+cu118
+- GNU Complier Collection >=8.1.0
+- [OpenKE-Pytorch](http://139.129.163.161//)
+
+### Data
+
+The test data is [test2id](data/test2id.txt). The training set will be made public when the paper is accepted.
+
+### Run
+
 First, build the openke dynamic library
 
 ```bash
