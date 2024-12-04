@@ -62,16 +62,16 @@ if __name__ == "__main__":
         model_name.lower(), train_dataloader=train_dataloader, dim=dim, margin=margin, epsilon=epsilon
     )
 
+    if is_train:
     # define sampler and loss function
-    sampler = NegativeSampling(
-        model=the_model,
-        loss=SoftplusLoss(),
-        batch_size=train_dataloader.get_batch_size(),
-        regul_rate=regul_rate,
-    )
+        sampler = NegativeSampling(
+            model=the_model,
+            loss=SoftplusLoss(),
+            batch_size=train_dataloader.get_batch_size(),
+            regul_rate=regul_rate,
+        )
 
     # train the model
-    if is_train:
         trainer = Trainer(
             model=sampler,
             data_loader=train_dataloader,
