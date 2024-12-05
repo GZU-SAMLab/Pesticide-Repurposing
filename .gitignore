@@ -1,4 +1,4 @@
 .vscode/
-data/train2id.txt
+data/train2id_all.txt
 openke/__pycache__/
 *.pyc

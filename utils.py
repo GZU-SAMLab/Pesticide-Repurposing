@@ -10,7 +10,20 @@ def parse_arguments():
     parser.add_argument(
         "--model_name",
         type=str,
-        choices=["TransE", "Trans", "TransR", "TransD", "ComplEx", "RotatE"],
+        choices=[
+            "TransE",
+            "TransH",
+            "TransR",
+            "TransD",
+            "ComplEx",
+            "RotatE",
+            "transe",
+            "transh",
+            "transr",
+            "transd",
+            "complex",
+            "rotate",
+        ],
         default="TransE",
         help="The model name. Choices are: TransE, Trans, TransR, TransD, ComplEx, RotatE. Default is TransE.",
     )
@@ -139,6 +152,5 @@ def get_model(model_name: str, train_dataloader, dim, margin, epsilon=None):
                 rel_tot=train_dataloader.get_rel_tot(),
                 dim=dim,
                 margin=margin,
-                epsilon=epsilon,
             )
     return the_model

@@ -1,6 +1,7 @@
 import torch
 import torch.autograd as autograd
 import torch.nn as nn
+
 from .Model import Model
 
 
@@ -21,22 +22,11 @@ class RotatE(Model):
         self.ent_embedding_range = nn.Parameter(
             torch.Tensor([(self.margin + self.epsilon) / self.dim_e]), requires_grad=False
         )
-
-        nn.init.uniform_(
-            tensor=self.ent_embeddings.weight.data,
-            a=-self.ent_embedding_range.item(),
-            b=self.ent_embedding_range.item(),
-        )
-
         self.rel_embedding_range = nn.Parameter(
             torch.Tensor([(self.margin + self.epsilon) / self.dim_r]), requires_grad=False
         )
-
-        nn.init.uniform_(
-            tensor=self.rel_embeddings.weight.data,
-            a=-self.rel_embedding_range.item(),
-            b=self.rel_embedding_range.item(),
-        )
+        nn.init.xavier_uniform_(self.ent_embeddings.weight.data)
+        nn.init.xavier_uniform_(self.rel_embeddings.weight.data)
 
         self.margin = nn.Parameter(torch.Tensor([margin]))
         self.margin.requires_grad = False

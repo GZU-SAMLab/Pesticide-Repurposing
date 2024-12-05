@@ -37,10 +37,11 @@ Or you can run the following command to test the train ed model. Take TransE for
 
 ```bash
 python main.py --model_name TransE --data_path data/ \
---use_gpu True -test True --load_path ckpt/TransE.ckpt
+--use_gpu True --test True --load_path ckpt/TransE.ckpt
 ```
 
 ## Results
 
 The results of KGE models in pesticide knowledge graph are shown in the following table.
 ![results](img/results.png)
+
